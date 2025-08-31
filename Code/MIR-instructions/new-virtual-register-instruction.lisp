@@ -6,6 +6,8 @@
 ;;; literal or an existing virtual register.
 
 (defclass new-virtual-register-instruction
-    (one-successor-mixin instruction)
-  ((%initial-value :initarg :initial-value :reader initial-value)
-   (%virtual-register :initarg :virtual-register :reader virtual-register)))
+    (instruction
+     one-successor-mixin
+     unary-operation-mixin
+     one-output-mixin)
+  ())

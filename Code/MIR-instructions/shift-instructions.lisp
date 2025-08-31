@@ -7,7 +7,8 @@
 (defclass shift-instruction
     (instruction
      one-successor-mixin
-     binary-operation-mixin)
+     binary-operation-mixin
+     one-output-mixin)
   ())
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

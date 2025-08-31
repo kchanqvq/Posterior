@@ -5,6 +5,9 @@
 ;;; output which is set to the contents of the memory location
 ;;; specified by the input.
 
-(defclass memory-read-instruction (instruction one-successor-mixin)
-  ((%address :initarg :address :reader address)
-   (%datum :initarg :datum :reader datum)))
+(defclass memory-read-instruction
+    (instruction
+     one-successor-mixin
+     unary-operation-mixin
+     one-output-mixin)
+  ())

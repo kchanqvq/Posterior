@@ -9,11 +9,15 @@
    #:virtual-register #:size
    #:integer-virtual-register
    #:floating-point-virtual-register
+   #:successors
    #:one-successor-mixin #:successor
    #:two-successors-mixin
    #:successor1 #:successor2
-   #:binary-operation-mixin
-   #:unary-operation-mixin
+   #:inputs
+   #:binary-operation-mixin #:input
+   #:unary-operation-mixin #:input1 #:input2
+   #:outputs
+   #:one-output-mixin #:output
    #:commutative-mixin
    #:new-virtual-register-instruction
    #:add-instruction #:augend #:addend #:sum

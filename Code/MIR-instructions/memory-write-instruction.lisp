@@ -5,6 +5,9 @@
 ;;; memory.  The second input is the datum to be stored in that
 ;;; location.
 
-(defclass memory-write-instruction (instruction one-successor-mixin)
+(defclass memory-write-instruction
+    (instruction
+     one-successor-mixin
+     binary-operation-mixin)
   ((%address :initarg :address :reader address)
    (%datum :initarg :datum :reader datum)))

@@ -1,39 +1,27 @@
 (cl:in-package #:posterior-mir-instructions)
 
-(defgeneric comparand (instruction))
+;;; These instructions branch according to comparing their two inputs.
+;;; They have two successors.  Control transfers to the first successor
+;;; if result of the comparison is false, and to the second successor
+;;; if result of the comparison is true.
 
-(defgeneric comparator (instruction))
-
-(defclass comparison-mixin ()
-  ((%comparand :initarg :comparand :reader comparand)
-   (%comparator :initarg :comparator :reader comparator)))
-
-(defclass signed-less-instruction
+(defclass comparison-mixin
     (instruction
      two-successors-mixin
-     comparison-mixin)
+     binary-operation-mixin)
   ())
 
-(defclass signed-not-greater-instruction
-    (instruction
-     two-successors-mixin
-     comparison-mixin)
+(defclass signed-less-instruction (comparison-mixin)
   ())
 
-(defclass unsigned-less-instruction
-    (instruction
-     two-successors-mixin
-     comparison-mixin)
+(defclass signed-not-greater-instruction (comparison-mixin)
   ())
 
-(defclass unsigned-not-greater-instruction
-    (instruction
-     two-successors-mixin
-     comparison-mixin)
+(defclass unsigned-less-instruction (comparison-mixin)
   ())
 
-(defclass equal-instruction
-    (instruction
-     two-successors-mixin
-     comparison-mixin)
+(defclass unsigned-not-greater-instruction (comparison-mixin)
+  ())
+
+(defclass equal-instruction (comparison-mixin)
   ())

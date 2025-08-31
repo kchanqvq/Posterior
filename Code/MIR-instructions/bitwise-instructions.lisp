@@ -4,7 +4,8 @@
     (instruction
      one-successor-mixin
      binary-operation-mixin
-     commutative-mixin)
+     commutative-mixin
+     one-output-mixin)
   ())
 
 (defclass bitwise-and-instruction (binary-bitwise-instruction)
