@@ -11,7 +11,7 @@
    (:file "subtract-instruction")
    (:file "multiply-instruction")
    (:file "divide-instruction")
-   (:file "integer-arithmetic-instructions")
+   (:file "comparison-instructions")
    (:file "bitwise-instructions")
    (:file "shift-instructions")
    (:file "memory-read-instruction")
