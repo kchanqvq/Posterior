@@ -1,28 +1,5 @@
 (cl:in-package #:posterior-mir-instructions)
 
-(defclass instruction () ())
-
-(defgeneric successors (instruction))
-
-(defgeneric successor (instruction))
-
-(defclass one-successor-mixin ()
-  ((%successor :initarg :successor :reader successor)))
-
-(defmethod successors ((instruction one-successor-mixin))
-  (list (successor instruction)))
-
-(defgeneric successor1 (instruction))
-
-(defgeneric successor2 (instruction))
-
-(defclass two-successors-mixin ()
-  ((%successor1 :initarg :successor1 :reader successor1)
-   (%successor2 :initarg :successor2 :reader successor2)))
-
-(defmethod successors ((instruction two-successors-mixin))
-  (list (successor1 instruction) (successor2 instruction)))
-
 (defgeneric inputs (instruction))
 
 (defgeneric input (instruction))

@@ -2,6 +2,17 @@
 
 (defpackage #:posterior-mir-instructions
   (:use #:common-lisp)
+  (:import-from #:posterior-instruction-graph
+                #:instruction
+                #:successors
+                #:inputs
+                #:outputs
+                #:zero-successors-mixin
+                #:successor
+                #:one-successor-mixin
+                #:successor1
+                #:successor2
+                #:two-successors-mixin)
   (:export
    #:instruction
    #:datum
