@@ -1,12 +1,13 @@
 (cl:in-package #:posterior-utilities)
 
-(defgeneric table (predecessors))
+(defgeneric predecessors-table (predecessors))
 
 (defclass predecessors ()
-  ((%table :initform (make-hash-table :test #'eq) :reader table)))
+  ((%predecessors-table :initform (make-hash-table :test #'eq)
+                        :reader predecessors-table)))
 
-(defun predecessors (instruction predecessors)
-  (gethash instruction (table predecessors)))
+(defun predecessors (node predecessors)
+  (gethash node (predecessors-table predecessors)))
 
 ;;; Compute predecessors for each node in a graph of nodes starting
 ;;; with START-NODE.  The function SUCCESSORS-FUNCTION must return a
@@ -16,7 +17,7 @@
 
 (defun compute-predecessors (start-node successors-function)
   (let* ((result (make-instance 'predecessors))
-         (table (table result)))
+         (table (predecessors-table result)))
     (depth-first-search-preorder
      (lambda (node)
        (loop for successor in (funcall successors-function node)

@@ -7,4 +7,7 @@
    #:depth-first-search-postorder
    #:count-nodes
    #:compute-predecessors
-   #:predecessors))
+   #:predecessors
+   #:preimage
+   #:function-preimage
+   #:relation-preimage))

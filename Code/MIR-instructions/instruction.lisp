@@ -1,9 +1,5 @@
 (cl:in-package #:posterior-mir-instructions)
 
-(defgeneric inputs (instruction))
-
-(defgeneric input (instruction))
-
 (defclass unary-operation-mixin ()
   ((%input :initarg :input :reader input)))
 
@@ -20,8 +16,6 @@
 
 (defmethod inputs ((instruction binary-operation-mixin))
   (list (input1 instruction) (input2 instruction)))
-
-(defgeneric outputs (instruction))
 
 (defgeneric output (instruction))
 

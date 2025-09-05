@@ -2,7 +2,6 @@
 
 (defpackage #:posterior-instruction-graph
   (:use #:common-lisp)
-  (:local-nicknames (#:utilities #:posterior-utilities))
   (:export
    #:instruction
    #:successors
@@ -13,8 +12,4 @@
    #:one-successor-mixin
    #:successor1
    #:successor2
-   #:two-successors-mixin
-   #:basic-block
-   #:leader
-   #:trailer
-   #:compute-basic-blocks))
+   #:two-successors-mixin))
