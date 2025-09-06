@@ -2,12 +2,12 @@
 
 ;;; Destructively filter an instruction graph.
 ;;;
-;;; This function destructively deletes instructions that does not
+;;; This function destructively deletes instructions that do not
 ;;; satisfy TEST from an instruction graph starting with
 ;;; INITIAL-INSTRUCTION, and returns the initial instruction of the
 ;;; resulting graph.
 ;;;
-;;; The function TEST must return true for instructions with numbers
+;;; The function TEST must return true for instructions with the numbers
 ;;; of successors other than one, otherwise the behavior is undefined.
 
 (defun filter-graph (initial-instruction test)

@@ -1,5 +1,7 @@
 (cl:in-package #:posterior-graph-transformations)
 
+(defgeneric index (placeholder))
+
 (defclass placeholder (cfg:instruction cfg:zero-successors-mixin)
   ((%index :initarg :index :reader index)))
 
@@ -48,7 +50,7 @@
         (gethash instruction translation-table) #'cfg:successors)))
    initial-instruction #'cfg:successors))
 
-;;; Destructively rewrite an instruction graph
+;;; Destructively rewrite an instruction graph.
 ;;;
 ;;; This function destructively rewrites an instruction graph starting
 ;;; with INITIAL-INSTRUCTION.  REWRITE-FUNCTION must accept a single
@@ -59,12 +61,12 @@
 ;;; the original instruction.
 ;;;
 ;;; The function PRECIOUS-P must accept a single argument and return a
-;;; generalized boolean.  An instruction is retained if PRECIOUS-P
-;;; returns true on it, or if it writes to some input register of some
+;;; generalized boolean.  An instruction is retained if it satisfies
+;;; PRECIOUS-P, or if it writes to some input register of some
 ;;; retained instruction.  Only rewrites of retained instructions are
 ;;; computed and retained in final result.
 ;;;
-;;; DEFINITIONS must contains an POSTERIOR-ULTILITES:PREIMAGE computed
+;;; DEFINITIONS must contain an POSTERIOR-ULTILITES:PREIMAGE computed
 ;;; on OUTPUTS relation from instructions to registers in the
 ;;; instruction graph.  That is, DEFINITIONS should provide what
 ;;; instructions write to a given register.
