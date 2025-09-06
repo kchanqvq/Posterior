@@ -5,5 +5,4 @@
   :components
   ((:file "packages")
    (:file "instruction")
-   (:file "data")
-   (:file "filter-graph")))
+   (:file "data")))

@@ -1,4 +1,4 @@
-(cl:in-package #:posterior-instruction-graph)
+(cl:in-package #:posterior-graph-transformations)
 
 ;;; Destructively filter an instruction graph.
 ;;;
@@ -17,8 +17,8 @@
                    (progn
                      (unless (gethash instruction visited)
                        (setf (gethash instruction visited) t)
-                       (setf (successors instruction)
-                             (mapcar #'visit-instruction (successors instruction))))
+                       (setf (cfg:successors instruction)
+                             (mapcar #'visit-instruction (cfg:successors instruction))))
                      instruction)
-                   (visit-instruction (successor instruction)))))
+                   (visit-instruction (cfg:successor instruction)))))
       (visit-instruction initial-instruction))))
