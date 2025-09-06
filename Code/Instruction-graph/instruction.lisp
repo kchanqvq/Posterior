@@ -15,6 +15,10 @@
 (defmethod successors ((instruction zero-successors-mixin))
   '())
 
+(defmethod (setf successors) (new-value (instruction zero-successors-mixin))
+  (assert (null new-value))
+  new-value)
+
 (defgeneric successor (instruction))
 
 (defclass one-successor-mixin ()
@@ -25,7 +29,8 @@
 
 (defmethod (setf successors) (new-value (instruction one-successor-mixin))
   (assert (= (length new-value) 1))
-  (setf (successor instruction) (first new-value)))
+  (setf (successor instruction) (first new-value))
+  new-value)
 
 (defgeneric successor1 (instruction))
 
@@ -38,7 +43,8 @@
 (defmethod successors ((instruction two-successors-mixin))
   (list (successor1 instruction) (successor2 instruction)))
 
-(defmethod (setf successors) (new-value (instruction one-successor-mixin))
+(defmethod (setf successors) (new-value (instruction two-successors-mixin))
   (assert (= (length new-value) 2))
   (setf (successor1 instruction) (first new-value)
-        (successor2 instruction) (second new-value)))
+        (successor2 instruction) (second new-value))
+  new-value)
