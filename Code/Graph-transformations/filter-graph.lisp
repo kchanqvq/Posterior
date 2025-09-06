@@ -2,8 +2,8 @@
 
 ;;; Destructively filter an instruction graph.
 ;;;
-;;; This function destructively delete instructions that does not
-;;; satisfy TEST from a instruction graph starting with
+;;; This function destructively deletes instructions that does not
+;;; satisfy TEST from an instruction graph starting with
 ;;; INITIAL-INSTRUCTION, and returns the initial instruction of the
 ;;; resulting graph.
 ;;;

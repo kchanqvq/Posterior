@@ -9,4 +9,7 @@
                 #:hash-table-keys)
   (:local-nicknames (#:util #:posterior-utilities)
                     (#:cfg #:posterior-instruction-graph))
-  (:export #:filter-graph))
+  (:export #:filter-graph
+           #:placeholder
+           #:index
+           #:rewrite-graph))

@@ -7,4 +7,5 @@
                "posterior-instruction-graph")
   :components
   ((:file "packages")
-   (:file "filter-graph")))
+   (:file "filter-graph")
+   (:file "rewrite-graph")))
