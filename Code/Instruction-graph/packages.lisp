@@ -12,4 +12,5 @@
    #:one-successor-mixin
    #:successor1
    #:successor2
-   #:two-successors-mixin))
+   #:two-successors-mixin
+   #:datum))

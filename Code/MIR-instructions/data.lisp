@@ -1,7 +1,5 @@
 (cl:in-package #:posterior-mir-instructions)
 
-(defclass datum () ())
-
 (defgeneric value (literal))
 
 (defclass literal (datum)
