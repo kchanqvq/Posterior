@@ -13,4 +13,5 @@
    #:successor1
    #:successor2
    #:two-successors-mixin
-   #:datum))
+   #:datum
+   #:filter-graph))
