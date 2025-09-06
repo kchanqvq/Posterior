@@ -10,5 +10,5 @@
 
 ;;; This instruction has as many inputs as there are values to be
 ;;; returned from a function call.
-(defclass return-instruction (instruction)
+(defclass return-instruction (instruction zero-successors-mixin)
   ((%inputs :initarg :inputs :reader inputs)))
