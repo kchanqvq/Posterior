@@ -9,5 +9,9 @@
     (instruction
      one-successor-mixin
      binary-operation-mixin)
-  ((%address :initarg :address :reader address)
-   (%datum :initarg :datum :reader datum)))
+  ())
+
+;; TODO: allow annotating precise abstract heap information on the
+;; input register
+(defmethod absheap:side-effect-writes ((instruction memory-write-instruction))
+  (list absheap:*world*))

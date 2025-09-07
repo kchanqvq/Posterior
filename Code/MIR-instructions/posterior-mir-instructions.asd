@@ -2,7 +2,8 @@
 
 (defsystem "posterior-mir-instructions"
   :serial t
-  :depends-on ("posterior-instruction-graph")
+  :depends-on ("posterior-instruction-graph"
+               "posterior-abstract-heaps")
   :components
   ((:file "packages")
    (:file "data")

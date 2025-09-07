@@ -14,6 +14,7 @@
                 #:successor2
                 #:two-successors-mixin
                 #:datum)
+  (:local-nicknames (#:absheap #:posterior-abstract-heaps))
   (:export
    #:instruction
    #:datum

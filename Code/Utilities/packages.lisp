@@ -10,4 +10,5 @@
    #:predecessors
    #:preimage
    #:function-preimage
-   #:relation-preimage))
+   #:relation-preimage
+   #:graph-relation-preimage))

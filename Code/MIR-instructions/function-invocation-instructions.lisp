@@ -12,3 +12,6 @@
 ;;; returned from a function call.
 (defclass return-instruction (instruction zero-successors-mixin)
   ((%inputs :initarg :inputs :reader inputs)))
+
+(defmethod absheap:side-effect-writes ((instruction call-instruction))
+  (list absheap:*world*))

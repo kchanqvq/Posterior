@@ -25,3 +25,13 @@
           do (loop for image in images
                    do (push value (gethash image table '()))))
     result))
+
+(defun graph-relation-preimage (start-node successors-function relation)
+  (let* ((result (make-instance 'preimage))
+         (table (preimage-table result)))
+    (depth-first-search-preorder
+     (lambda (value)
+       (loop for image in (funcall relation value)
+             do (push value (gethash image table '()))))
+     start-node successors-function)
+    result))
