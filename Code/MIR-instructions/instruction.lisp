@@ -37,3 +37,5 @@
   (list (output1 instruction) (output2 instruction)))
 
 (defclass commutative-mixin () ())
+
+(defclass associative-mixin () ())

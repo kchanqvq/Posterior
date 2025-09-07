@@ -32,6 +32,7 @@
    #:outputs
    #:one-output-mixin #:output
    #:commutative-mixin
+   #:associative-mixin
    #:new-virtual-register-instruction
    #:add-instruction #:augend #:addend #:sum
    #:subtract-instruction #:minuend #:subtrahend #:difference
