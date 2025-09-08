@@ -2,6 +2,7 @@
 
 (defpackage #:posterior-instruction-graph
   (:use #:common-lisp)
+  (:local-nicknames (#:util #:posterior-utilities))
   (:export
    #:instruction
    #:successors
@@ -13,4 +14,14 @@
    #:successor1
    #:successor2
    #:two-successors-mixin
-   #:datum))
+   #:datum
+   #:graph
+   #:initial-instruction
+   #:get-cache
+   #:ensure-cache
+   #:clear-cache
+   #:predecessors
+   #:definitions
+   #:single-definition
+   #:uses
+   #:single-use))

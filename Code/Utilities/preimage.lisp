@@ -9,24 +9,7 @@
 (defun preimage (value preimage)
   (gethash value (preimage-table preimage)))
 
-(defun function-preimage (values function)
-  (let* ((result (make-instance 'preimage))
-         (table (preimage-table result)))
-    (loop for value in values
-          for image = (funcall function value)
-          do (push value (gethash image table '())))
-    result))
-
-(defun relation-preimage (values relation)
-  (let* ((result (make-instance 'preimage))
-         (table (preimage-table result)))
-    (loop for value in values
-          for images = (funcall relation value)
-          do (loop for image in images
-                   do (push value (gethash image table '()))))
-    result))
-
-(defun graph-relation-preimage (start-node successors-function relation)
+(defun relation-preimage-for-graph (start-node successors-function relation)
   (let* ((result (make-instance 'preimage))
          (table (preimage-table result)))
     (depth-first-search-preorder

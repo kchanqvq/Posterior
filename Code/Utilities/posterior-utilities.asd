@@ -7,5 +7,4 @@
    (:file "depth-first-search-preorder")
    (:file "depth-first-search-postorder")
    (:file "count-nodes")
-   (:file "compute-predecessors")
    (:file "preimage")))

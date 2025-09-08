@@ -9,6 +9,4 @@
    #:compute-predecessors
    #:predecessors
    #:preimage
-   #:function-preimage
-   #:relation-preimage
-   #:graph-relation-preimage))
+   #:relation-preimage-for-graph))
