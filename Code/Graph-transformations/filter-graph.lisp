@@ -3,14 +3,12 @@
 ;;; Destructively filter an instruction graph.
 ;;;
 ;;; This function destructively deletes instructions that do not
-;;; satisfy TEST from an instruction graph starting with
-;;; INITIAL-INSTRUCTION, and returns the initial instruction of the
-;;; resulting graph.
+;;; satisfy TEST from GRAPH.
 ;;;
 ;;; The function TEST must return true for instructions with the numbers
 ;;; of successors other than one, otherwise the behavior is undefined.
 
-(defun filter-graph (initial-instruction test)
+(defun filter-graph (graph test)
   (let ((visited (make-hash-table :test 'eq)))
     (labels ((visit-instruction (instruction)
                (if (funcall test instruction)
@@ -21,4 +19,7 @@
                              (mapcar #'visit-instruction (cfg:successors instruction))))
                      instruction)
                    (visit-instruction (cfg:successor instruction)))))
-      (visit-instruction initial-instruction))))
+      (setf (cfg:initial-instruction graph)
+            (visit-instruction (cfg:initial-instruction graph)))
+      (cfg:clear-cache graph)
+      graph)))

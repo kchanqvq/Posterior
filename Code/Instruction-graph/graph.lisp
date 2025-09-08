@@ -2,8 +2,10 @@
 
 (defgeneric initial-instruction (graph))
 
+(defgeneric (setf initial-instruction) (new-value graph))
+
 (defgeneric cache (graph))
 
 (defclass graph ()
-  ((%initial-instruction :initarg :initial-instruction :reader initial-instruction)
+  ((%initial-instruction :initarg :initial-instruction :accessor initial-instruction)
    (%cache :initform (make-hash-table) :reader cache)))

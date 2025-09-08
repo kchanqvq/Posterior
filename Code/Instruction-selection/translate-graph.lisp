@@ -1,3 +1,3 @@
 (cl:in-package #:posterior-instruction-selection)
 
-(defgeneric translate-graph (client initial-instruction))
+(defgeneric translate-graph (client graph))

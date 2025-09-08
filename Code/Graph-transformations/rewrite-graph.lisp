@@ -14,12 +14,11 @@
      initial-instruction #'cfg:successors)
     (hash-table-keys result)))
 
-(defun compute-translation-table
-    (initial-instruction definitions precious-p rewrite-function)
+(defun compute-translation-table (graph precious-p rewrite-function)
   (let ((translation-table (make-hash-table :test 'eq)))
     (labels ((required-instructions (initial-instruction)
                (remove-duplicates
-                (mappend (rcurry #'util:preimage definitions)
+                (mappend (rcurry #'cfg:definitions graph)
                          (required-registers initial-instruction))))
              (ensure-translation (instruction)
                (unless (gethash instruction translation-table)
@@ -32,7 +31,7 @@
        (lambda (instruction)
          (when (funcall precious-p instruction)
            (ensure-translation instruction)))
-       initial-instruction #'cfg:successors))
+       (cfg:initial-instruction graph) #'cfg:successors))
     translation-table))
 
 (defun fixup-placeholders (initial-instruction translation-table)
@@ -52,13 +51,12 @@
 
 ;;; Destructively rewrite an instruction graph.
 ;;;
-;;; This function destructively rewrites an instruction graph starting
-;;; with INITIAL-INSTRUCTION.  REWRITE-FUNCTION must accept a single
-;;; argument which is the instruction to be rewritten, and return the
-;;; initial instruction of an instruction graph to replace the
-;;; original instruction.  If the returned instruction graph contains
-;;; any PLACEHOLDER, it is replaced with the corresponding successor of
-;;; the original instruction.
+;;; This function destructively rewrites GRAPH.  REWRITE-FUNCTION must
+;;; accept a single argument which is the instruction to be rewritten,
+;;; and return the initial instruction of an instruction graph to
+;;; replace the original instruction.  If the returned instruction
+;;; graph contains any PLACEHOLDER, it is replaced with the
+;;; corresponding successor of the original instruction.
 ;;;
 ;;; The function PRECIOUS-P must accept a single argument and return a
 ;;; generalized boolean.  An instruction is retained if it satisfies
@@ -66,19 +64,14 @@
 ;;; retained instruction.  Only rewrites of retained instructions are
 ;;; computed and retained in final result.
 ;;;
-;;; DEFINITIONS must contain an POSTERIOR-ULTILITES:PREIMAGE computed
-;;; on OUTPUTS relation from instructions to registers in the
-;;; instruction graph.  That is, DEFINITIONS should provide what
-;;; instructions write to a given register.
-;;;
 ;;; The function PRECIOUS-P must return true for instructions with numbers
 ;;; of successors other than one, otherwise the behavior is undefined.
 
-(defun rewrite-graph (initial-instruction definitions precious-p rewrite-function)
-  (let* ((translation-table
-           (compute-translation-table
-            initial-instruction definitions precious-p rewrite-function))
-         (initial-instruction
-           (filter-graph initial-instruction (rcurry #'gethash translation-table))))
-    (fixup-placeholders initial-instruction translation-table)
-    (gethash initial-instruction translation-table)))
+(defun rewrite-graph (graph precious-p rewrite-function)
+  (let ((translation-table
+          (compute-translation-table graph precious-p rewrite-function)))
+    (filter-graph graph (rcurry #'gethash translation-table))
+    (fixup-placeholders (cfg:initial-instruction graph) translation-table)
+    (setf (cfg:initial-instruction graph)
+          (gethash (cfg:initial-instruction graph) translation-table))
+    graph))

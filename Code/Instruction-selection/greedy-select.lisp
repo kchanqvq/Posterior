@@ -2,12 +2,10 @@
 
 (defclass greedy-select-client () ())
 
-(defmethod translate-graph ((client greedy-select-client) initial-instruction)
+(defmethod translate-graph ((client greedy-select-client) graph)
   (transform:rewrite-graph
-   initial-instruction
-   (util:graph-relation-preimage
-    initial-instruction #'cfg:successors #'cfg:outputs)
+   graph
    (lambda (instruction)
      (or (absheap:side-effect-writes instruction)
          (not (= 1 (length (cfg:successors instruction))))))
-   (curry #'compute-translation client)))
+   (curry #'compute-translation client graph)))
