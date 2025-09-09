@@ -5,5 +5,6 @@
      one-successor-mixin
      binary-operation-mixin
      commutative-mixin
+     associative-mixin
      one-output-mixin)
   ())
