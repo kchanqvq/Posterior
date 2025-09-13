@@ -5,8 +5,8 @@
 (defgeneric shift-count (instruction))
 
 (defclass shift-instruction
-    (instruction
-     one-successor-mixin
+    (cfg:instruction
+     cfg:one-successor-mixin
      binary-operation-mixin
      one-output-mixin)
   ())

@@ -6,8 +6,8 @@
 ;;; location.
 
 (defclass memory-write-instruction
-    (instruction
-     one-successor-mixin
+    (cfg:instruction
+     cfg:one-successor-mixin
      binary-operation-mixin)
   ())
 

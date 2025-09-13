@@ -2,19 +2,9 @@
 
 (defpackage #:posterior-mir-instructions
   (:use #:common-lisp)
-  (:import-from #:posterior-instruction-graph
-                #:instruction
-                #:successors
-                #:inputs
-                #:outputs
-                #:zero-successors-mixin
-                #:successor
-                #:one-successor-mixin
-                #:successor1
-                #:successor2
-                #:two-successors-mixin
-                #:datum)
-  (:local-nicknames (#:absheap #:posterior-abstract-heaps))
+  (:local-nicknames (#:absheap #:posterior-abstract-heaps)
+                    (#:bb #:posterior-basic-blocks)
+                    (#:cfg #:posterior-instruction-graph))
   (:export
    #:instruction
    #:datum
@@ -22,14 +12,10 @@
    #:virtual-register #:size
    #:integer-virtual-register
    #:floating-point-virtual-register
-   #:successors
    #:one-successor-mixin #:successor
    #:two-successors-mixin
-   #:successor1 #:successor2
-   #:inputs
    #:binary-operation-mixin #:input
    #:unary-operation-mixin #:input1 #:input2
-   #:outputs
    #:one-output-mixin #:output
    #:commutative-mixin
    #:new-virtual-register-instruction

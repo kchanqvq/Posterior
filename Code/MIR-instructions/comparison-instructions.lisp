@@ -6,8 +6,8 @@
 ;;; if result of the comparison is true.
 
 (defclass comparison-mixin
-    (instruction
-     two-successors-mixin
+    (cfg:instruction
+     cfg:two-successors-mixin
      binary-operation-mixin)
   ())
 

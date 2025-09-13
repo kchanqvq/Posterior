@@ -4,4 +4,4 @@
   (util:preimage instruction
                  (ensure-cache 'predecessors graph
                                (util:relation-preimage-for-graph
-                                graph #'successors #'successors))))
+                                (initial-instruction graph) #'successors #'successors))))

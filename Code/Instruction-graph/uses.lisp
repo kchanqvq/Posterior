@@ -4,7 +4,7 @@
   (util:preimage instruction
                  (ensure-cache 'predecessors graph
                                (util:relation-preimage-for-graph
-                                graph #'successors #'inputs))))
+                                (initial-instruction graph) #'successors #'inputs))))
 
 (defun single-use (instruction graph)
   (let ((uses (uses instruction graph)))

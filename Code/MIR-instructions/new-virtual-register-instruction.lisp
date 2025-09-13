@@ -6,8 +6,8 @@
 ;;; literal or an existing virtual register.
 
 (defclass new-virtual-register-instruction
-    (instruction
-     one-successor-mixin
+    (cfg:instruction
+     cfg:one-successor-mixin
      unary-operation-mixin
      one-output-mixin)
   ())

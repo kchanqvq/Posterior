@@ -6,8 +6,8 @@
 ;;; specified by the input.
 
 (defclass memory-read-instruction
-    (instruction
-     one-successor-mixin
+    (cfg:instruction
+     cfg:one-successor-mixin
      unary-operation-mixin
      one-output-mixin)
   ())
