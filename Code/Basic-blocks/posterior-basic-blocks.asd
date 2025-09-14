@@ -10,6 +10,7 @@
    (:file "basic-block")
    (:file "compute-basic-blocks")
    (:file "repair-trailer-successors")
+   (:file "traverse-basic-block")
    (:file "map-basic-block")
    (:file "make-basic-block")
    (:file "block-program")
