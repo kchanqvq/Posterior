@@ -19,6 +19,8 @@
   :components ((:module "Test"
                 :serial t
                 :components ((:file "packages")
-                             (:file "filter-graph"))))
+                             (:file "dummy-instruction")
+                             (:file "filter-graph")
+                             (:file "rewrite-graph"))))
   :perform (test-op (operation component)
                     (uiop:symbol-call '#:fiveam '#:run! :posterior-graph-transformations/test)))

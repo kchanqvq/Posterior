@@ -5,6 +5,12 @@
 (defclass placeholder (cfg:instruction cfg:zero-successors-mixin)
   ((%index :initarg :index :reader index)))
 
+(defmethod cfg:inputs ((instruction placeholder))
+  '())
+
+(defmethod cfg:outputs ((instruction placeholder))
+  '())
+
 (defun required-registers (initial-instruction)
   (let ((result (make-hash-table :test 'eq)))
     (util:depth-first-search-preorder
