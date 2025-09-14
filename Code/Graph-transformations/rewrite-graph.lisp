@@ -43,7 +43,8 @@
 (defun fixup-placeholders (initial-instruction translation-table)
   (util:depth-first-search-preorder
    (lambda (instruction)
-     (let ((successors (cfg:successors instruction)))
+     (let ((successors (mapcar (rcurry #'gethash translation-table)
+                               (cfg:successors instruction))))
        (util:depth-first-search-preorder
         (lambda (translated-instruction)
           (setf (cfg:successors translated-instruction)
